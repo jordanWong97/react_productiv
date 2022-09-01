@@ -36,34 +36,40 @@ function TodoApp() {
     setTodoListData(curr => curr.filter(todo => todo.id !== id));
   }
 
+
   return (
-      <main className="TodoApp">
-        <div className="row">
+    <main className="TodoApp">
+      <div className="row">
 
-          <div className="col-md-6">
-            <EditableTodoList
-                todos={todoListData}
-                update={update}
-                remove={remove}
-            /> OR
+        <div className="col-md-6">
+          {todoListData.length !== 0 && <EditableTodoList
+            todos={todoListData}
+            update={update}
+            remove={remove}
+          />
+          }
+          {todoListData.length === 0 &&
             <span className="text-muted">You have no todos.</span>
-          </div>
+          }
+        </div>
 
-          <div className="col-md-6">
-            (if no top todo, omit this whole section)
+        <div className="col-md-6">
+          {todoListData.length !== 0 &&
             <section className="mb-4">
               <h3>Top Todo</h3>
-              <TopTodo />
+              <TopTodo todos={todoListData} />
             </section>
+          }
 
-            <section>
-              <h3 className="mb-3">Add Nü</h3>
-              <TodoForm handleSave={create} />
-            </section>
-          </div>
 
+          <section>
+            <h3 className="mb-3">Add Nü</h3>
+            <TodoForm handleSave={create} />
+          </section>
         </div>
-      </main>
+
+      </div>
+    </main>
   );
 }
 

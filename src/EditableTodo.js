@@ -14,41 +14,53 @@ import TodoForm from "./TodoForm";
 
 function EditableTodo({ todo, update, remove }) {
 
+  const [isEdit, setIsEdit] = useState(false);
+
+  const { id, title, description, priority } = todo;
+
   /** Toggle if this is being edited */
-  function toggleEdit() { }
+  function toggleEdit() {
+    setIsEdit(true);
+  }
 
   /** Call remove fn passed to this. */
-  function handleDelete() {remove(todo.id);}
+  function handleDelete() { remove(id); }
 
   /** Edit form saved; toggle isEditing and update in ancestor. */
-  function handleSave(formData) {update(formData);}
+  function handleSave(formData) {
+    update(formData);
+    setIsEdit(false);
+  }
 
   return (
-      <div className="EditableTodo">
+    <div className="EditableTodo">
 
-                EITHER
+      {isEdit && <TodoForm initialFormData={todo} handleSave={handleSave} />}
 
-                <TodoForm handleSave={handleSave}/>
+      {!isEdit &&
+        <div className="mb-3">
+          <div className="float-end text-sm-end">
+            <button
+              className="EditableTodo-toggle btn-link btn btn-sm"
+              onClick={toggleEdit}>
+              Edit
+            </button>
+            <button
+              className="EditableTodo-delBtn btn-link btn btn-sm text-danger"
+              onClick={handleDelete}>
+              Del
+            </button>
+          </div>
+          <Todo
+            key={id}
+            title={title}
+            description={description}
+            priority={priority} />
+        </div>}
 
-                OR
 
-                <div className="mb-3">
-                  <div className="float-end text-sm-end">
-                    <button
-                        className="EditableTodo-toggle btn-link btn btn-sm"
-                        onClick={toggleEdit}>
-                      Edit
-                    </button>
-                    <button
-                        className="EditableTodo-delBtn btn-link btn btn-sm text-danger"
-                        onClick={handleDelete}>
-                      Del
-                    </button>
-                  </div>
-                  <Todo />
-                </div>
 
-      </div>
+    </div>
   );
 }
 
