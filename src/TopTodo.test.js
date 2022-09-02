@@ -1,20 +1,53 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import TopTodo from "./App";
+import TopTodo from "./TopTodo";
 
 describe("productiv app", function () {
   it("renders without crashing", function () {
-    render(<TopTodo />);
+    render(<TopTodo todos={[{
+      id: 1,
+      title: "test",
+      description: "test",
+      priority: 1
+    }]} />);
   });
 
-  it("contains expected title", function () {
-    const result = render(<TopTodo />);
-    expect(result.queryByText("Prøductïv")).toBeInTheDocument();
+  it("renders todo title", function () {
+    const { container, queryByText } = render(<TopTodo todos={[{
+      id: 1,
+      title: "testTitle",
+      description: "testDesc",
+      priority: 1
+    }]} />);
+    expect(queryByText("testTitle")).toBeInTheDocument();
   });
 
-  it ("rendered quotes app", function () {
-    const result = render(<TopTodo />);
-    expect(result.queryByText("Click here for an inspirational quøte!")).toBeInTheDocument();
+  it("renders todo description", function () {
+    const { container, debug, queryByText } = render(<TopTodo todos={[{
+      id: 1,
+      title: "testTitle",
+      description: "testDesc",
+      priority: 1
+    }]} />);
+    expect(queryByText("testDesc")).toBeInTheDocument();
   });
+
+  it("snapshot test", function () {
+    const { container } = render(<TopTodo todos={[{
+      id: 1,
+      title: "testTitle",
+      description: "testDesc",
+      priority: 1
+    }]} />);
+    expect(container).toMatchSnapshot();
+  });
+
 });
+
+// todo={{
+//   id: 1,
+//   title: "test",
+//   description: "test",
+//   priority: 1
+// }}
 

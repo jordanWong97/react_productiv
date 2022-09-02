@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import TodoForm from "./App";
+import TodoForm from "./TodoForm";
 
 describe("todo form component", function () {
   it("renders without crashing", function () {
@@ -8,11 +8,22 @@ describe("todo form component", function () {
   });
 
   it("contains expected todo form div", function () {
-    const { container } = render(<TodoForm />);
-    expect(container.querySelector("NewTodoForm")).toBeInTheDocument();
+    const { container, debug } = render(<TodoForm />);
+    expect(container.querySelector(".NewTodoForm")).toBeInTheDocument();
   });
 
-  it ("snapshot test", function () {
+  it("edit todo form", function () {
+    const { container, getByText } = render(<TodoForm
+      initialFormData={{
+        id: 1,
+        title: "test",
+        description: "test",
+        priority: 1
+      }} />);
+    expect(getByText("test")).toBeInTheDocument();
+  });
+
+  it("snapshot test", function () {
     const { container } = render(<TodoForm />);
     expect(container).toMatchSnapshot();
   });

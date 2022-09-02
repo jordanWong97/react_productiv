@@ -7,14 +7,11 @@ describe("productiv app", function () {
     render(<TodoApp />);
   });
 
-  it("contains expected title", function () {
-    const result = render(<TodoApp />);
-    expect(result.queryByText("Prøductïv")).toBeInTheDocument();
+  it("contains add new todo form title", function () {
+    const { container, debug, queryByText } = render(<TodoApp />);
+    expect(queryByText("Add Nü")).toBeInTheDocument();
   });
 
-  it ("rendered quotes app", function () {
-    const result = render(<TodoApp />);
-    expect(result.queryByText("Click here for an inspirational quøte!")).toBeInTheDocument();
-  });
+
 });
 

@@ -2,131 +2,47 @@
 
 exports[`productiv app snapshot test 1`] = `
 <div>
-  <main
-    class="App"
+  <div
+    class="EditableTodo"
   >
-    <header
-      class="container-fluid pt-4 pb-1"
+    <div
+      class="mb-3"
     >
       <div
-        class="container"
+        class="float-end text-sm-end"
       >
-        <h1>
-          Prøductïv
-        </h1>
-        <p
-          class="lead"
+        <button
+          class="EditableTodo-toggle btn-link btn btn-sm"
         >
-          The best name in todo list management.
-        </p>
+          Edit
+        </button>
+        <button
+          class="EditableTodo-delBtn btn-link btn btn-sm text-danger"
+        >
+          Del
+        </button>
       </div>
-    </header>
-    <section
-      class="container mt-4"
-    >
-      <main
-        class="TodoApp"
+      <div
+        class="Todo"
       >
-        <div
-          class="row"
-        >
-          <div
-            class="col-md-6"
-          >
-            <span
-              class="text-muted"
-            >
-              You have no todos.
-            </span>
-          </div>
-          <div
-            class="col-md-6"
-          >
-            <section>
-              <h3
-                class="mb-3"
-              >
-                Add Nü
-              </h3>
-              <form
-                class="NewTodoForm"
-              >
-                <div
-                  class="mb-3"
-                >
-                  <input
-                    aria-label="Title"
-                    class="form-control"
-                    id="newTodo-title"
-                    name="title"
-                    placeholder="Title"
-                    value=""
-                  />
-                </div>
-                <div
-                  class="mb-3"
-                >
-                  <textarea
-                    aria-label="Description"
-                    class="form-control"
-                    id="newTodo-description"
-                    name="description"
-                    placeholder="Description"
-                  />
-                </div>
-                <div
-                  class="mb-3 d-flex justify-content-between"
-                >
-                  <div
-                    class="w-75 d-flex justify-content-between"
-                  >
-                    <label
-                      class="d-inline-flex"
-                      for="newTodo-priority"
-                    >
-                      Priority:  
-                    </label>
-                    <select
-                      class="form-control form-control-sm d-inline-flex"
-                      id="newTodo-priority"
-                      name="priority"
-                    >
-                      <option
-                        value="1"
-                      >
-                        Ultra-Über
-                      </option>
-                      <option
-                        value="2"
-                      >
-                        Über
-                      </option>
-                      <option
-                        value="3"
-                      >
-                        Meh
-                      </option>
-                    </select>
-                  </div>
-                  <button
-                    class="btn-primary rig btn btn-sm NewTodoForm-addBtn"
-                  >
-                    Gø!
-                  </button>
-                </div>
-              </form>
-            </section>
-          </div>
+        <div>
+          <b>
+            test
+          </b>
+           
+          <small>
+            (priority: 
+            1
+            )
+          </small>
         </div>
-      </main>
-      <footer
-        class="App-footer mt-5 text-muted"
-      >
-        <small>
-          Prødutïv is copyright ©2020 by Flüffy Data Enterprises, Inc.
-        </small>
-      </footer>
-    </section>
-  </main>
+        <div>
+          <small>
+            test
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 `;
