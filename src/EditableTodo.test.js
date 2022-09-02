@@ -8,9 +8,15 @@ describe("productiv app", function () {
   });
 
   it("todo component is in the document", function () {
-    const { container } =
-      render(<EditableTodo />);
-    expect(container.querySelector(".Todo")).toBeInTheDocument();
+    const { container, debug } =
+      render(<EditableTodo
+              todo={{id: 1,
+                    title: "test",
+                    description: "test",
+                    priority: 1}}/>);
+    debug()
+    const todo = container.querySelector(".Todo");
+    expect(todo).toBeInTheDocument();
     expect(container.querySelector(".NewTodoForm")).not.toBeInTheDocument();
   });
 
