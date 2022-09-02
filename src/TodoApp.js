@@ -16,7 +16,7 @@ import TodoForm from "./TodoForm";
  * App -> TodoApp -> { TodoForm, EditableTodoList }
  */
 
-function TodoApp() {
+function TodoApp({ initialTodos }) {
   const [todoListData, setTodoListData] = useState([]);
 
   /** add a new todo to list */
